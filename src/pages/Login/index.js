@@ -18,7 +18,7 @@ class Login extends Component {
     });
   }
 
-  handleClick = async () => {
+  handlePlay = async () => {
     const { history } = this.props;
     const { token } = await getTriviaToken();
     localStorage.setItem('token', token);
@@ -33,8 +33,13 @@ class Login extends Component {
     return true;
   }
 
+  handleSettings = () => {
+
+  }
+
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
     return (
       <div className="login-container">
         <form>
@@ -64,9 +69,16 @@ class Login extends Component {
             type="button"
             data-testid="btn-play"
             disabled={ this.validateBtn() }
-            onClick={ this.handleClick }
+            onClick={ this.handlePlay }
           >
             Play
+          </button>
+          <button
+            type="button"
+            data-testid="btn-settings"
+            onClick={ () => history.push('/settings') }
+          >
+            Configurações
           </button>
         </form>
       </div>
