@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { logUserAction } from '../../Redux/actions';
 import getTriviaToken from '../../utils/triviaToken';
 import './styles.css';
 
@@ -18,10 +20,11 @@ class Login extends Component {
     });
   }
 
-  handleClick = async () => {
-    const { history } = this.props;
+  handlePlay = async () => {
+    const { history, logUser } = this.props;
     const { token } = await getTriviaToken();
     localStorage.setItem('token', token);
+    logUser(this.state);
     history.push('/game');
   }
 
@@ -33,8 +36,13 @@ class Login extends Component {
     return true;
   }
 
+  handleSettings = () => {
+
+  }
+
   render() {
     const { name, email } = this.state;
+    const { history } = this.props;
     return (
       <div className="login-container">
         <form>
@@ -64,9 +72,16 @@ class Login extends Component {
             type="button"
             data-testid="btn-play"
             disabled={ this.validateBtn() }
-            onClick={ this.handleClick }
+            onClick={ this.handlePlay }
           >
             Play
+          </button>
+          <button
+            type="button"
+            data-testid="btn-settings"
+            onClick={ () => history.push('/settings') }
+          >
+            Configurações
           </button>
         </form>
       </div>
@@ -78,6 +93,11 @@ Login.propTypes = {
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
+  logUser: PropTypes.func.isRequired,
 };
 
-export default Login;
+const mapDispatchToProps = (dispatch) => ({
+  logUser: (payload) => dispatch(logUserAction(payload)),
+});
+
+export default connect(null, mapDispatchToProps)(Login);
