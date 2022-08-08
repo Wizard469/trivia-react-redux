@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import './styles.css';
 import md5 from 'crypto-js/md5';
 import getQuestions from '../../utils/triviaQuestions';
+import escapeHtml from '../../utils/escapeHtml';
 
 const half = 0.5;
 
@@ -14,6 +15,7 @@ class Game extends Component {
       index: 0,
       questions: [],
       answers: [],
+      isClicked: false,
     };
   }
 
@@ -29,11 +31,13 @@ class Game extends Component {
       answersArray.push({
         text: question.correct_answer,
         testId: 'correct-answer',
+        className: 'correct',
       });
       question.incorrect_answers.forEach((answer, answerIndex) => {
         answersArray.push({
           text: answer,
           testId: `wrong-answer-${answerIndex}`,
+          className: 'incorrect',
         });
       });
       answers.push(answersArray);
@@ -64,11 +68,18 @@ class Game extends Component {
     return md5(gravatarEmail).toString();
   }
 
+  isCorrect = () => {
+    this.setState({
+      isClicked: true,
+    });
+  }
+
   render() {
     const {
       questions,
       index,
       answers,
+      isClicked,
     } = this.state;
 
     if (questions.length === 0 || answers.length === 0) {
@@ -103,13 +114,15 @@ class Game extends Component {
             {
               answers[index]
                 .sort(() => Math.random() - half)
-                .map(({ text, testId }, answerIndex) => (
+                .map(({ text, testId, className }, answerIndex) => (
                   <button
                     key={ answerIndex }
                     type="button"
                     data-testid={ testId }
+                    className={ isClicked ? className : null }
+                    onClick={ this.isCorrect }
                   >
-                    { text }
+                    { escapeHtml(text) }
                   </button>
                 ))
             }

@@ -1,8 +1,42 @@
+.game-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  min-height: 100vh;
+}
+
 .game-container header {
   display: flex;
   justify-content: space-around;
+  width: 100%;
 }
 
 .game-container img {
   width: 25px;
+}
+
+.trivia-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 700px;
+}
+
+.answers {
+  display: flex;
+  gap: 5px;
+}
+
+.answers button {
+  padding: 5px 10px;
+}
+
+.correct {
+  border: 3px solid rgb(6, 240, 15);
+}
+
+.incorrect {
+  border: 3px solid red;
 }
