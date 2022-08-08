@@ -4,9 +4,7 @@ import { connect } from 'react-redux';
 import './styles.css';
 import md5 from 'crypto-js/md5';
 import getQuestions from '../../utils/triviaQuestions';
-import escapeHtml from '../../utils/escapeHtml';
-
-const half = 0.5;
+import TriviaCard from '../../components/TriviaCard';
 
 class Game extends Component {
   constructor() {
@@ -68,12 +66,6 @@ class Game extends Component {
     return md5(gravatarEmail).toString();
   }
 
-  isCorrect = () => {
-    this.setState({
-      isClicked: true,
-    });
-  }
-
   render() {
     const {
       questions,
@@ -92,10 +84,6 @@ class Game extends Component {
       score,
     } = this.props;
 
-    const {
-      category,
-      question,
-    } = questions[index];
     return (
       <div className="game-container">
         <header>
@@ -107,7 +95,12 @@ class Game extends Component {
           <p data-testid="header-player-name">{ name }</p>
           <p data-testid="header-score">{ score }</p>
         </header>
-        <div className="trivia-container">
+        <TriviaCard
+          question={ questions[index] }
+          isClicked={ isClicked }
+          answer={ answers[index] }
+        />
+        {/* <div className="trivia-container">
           <p data-testid="question-category">{ category }</p>
           <p data-testid="question-text">{ question }</p>
           <div className="answers" data-testid="answer-options">
@@ -127,7 +120,7 @@ class Game extends Component {
                 ))
             }
           </div>
-        </div>
+        </div> */}
       </div>
     );
   }
