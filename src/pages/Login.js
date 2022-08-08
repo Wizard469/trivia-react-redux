@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { logUserAction } from '../../Redux/actions';
-import getTriviaToken from '../../utils/triviaToken';
-import './styles.css';
+import { logUserAction } from '../Redux/actions';
+import getTriviaToken from '../utils/triviaToken';
+import './Login.css';
 
 class Login extends Component {
   constructor() {
@@ -34,10 +34,6 @@ class Login extends Component {
     if (filter.test(email) && name) return false;
 
     return true;
-  }
-
-  handleSettings = () => {
-
   }
 
   render() {

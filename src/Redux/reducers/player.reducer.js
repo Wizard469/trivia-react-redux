@@ -1,4 +1,4 @@
-import { LOG_USER } from '../actions';
+import { LOG_USER, UPDATE_SCORE } from '../actions';
 
 const INITIAL_STATE = {
   name: 'Renato Mendes',
@@ -9,6 +9,11 @@ const INITIAL_STATE = {
 
 const player = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+  case UPDATE_SCORE:
+    return {
+      ...state,
+      score: state.score + payload,
+    };
   case LOG_USER:
     return {
       ...state,
