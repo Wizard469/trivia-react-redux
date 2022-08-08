@@ -10,16 +10,29 @@ const half = 0.5;
 const basePoints = 10;
 
 class TriviaCard extends Component {
-  constructor(props) {
-    super(props);
-    const { answer } = props;
+  constructor() {
+    super();
     this.state = {
       isClicked: false,
       isDisabled: false,
       answerTime: null,
-      answersArray: answer.sort(() => Math.random() - half),
+      answersArray: [],
       isCorrect: null,
+      shouldReset: false,
     };
+  }
+
+  static getDerivedStateFromProps({ answer }, { answersArray }) {
+    const answerMap = answer.map(({ text }) => text);
+    const answersArrayMap = answersArray.map(({ text }) => text);
+    if (!answerMap.every((el) => answersArrayMap.includes(el))) {
+      return {
+        answersArray: answer.sort(() => Math.random() - half),
+      };
+    }
+
+    // Return null to indicate no change to state.
+    return null;
   }
 
   isCorrect = ({ target }) => {
@@ -27,6 +40,12 @@ class TriviaCard extends Component {
       isClicked: true,
     }, () => this.setState({
       isCorrect: target.className === 'correct',
+    }));
+  }
+
+  resetTimer = () => {
+    this.setState(({ shouldReset: prevReset }) => ({
+      shouldReset: !prevReset,
     }));
   }
 
@@ -58,7 +77,7 @@ class TriviaCard extends Component {
       isDisabled: false,
       answerTime: null,
       isCorrect: null,
-    });
+    }, () => this.resetTimer());
     updateQuestion();
   }
 
@@ -73,6 +92,7 @@ class TriviaCard extends Component {
       isClicked,
       isDisabled,
       answersArray,
+      shouldReset,
     } = this.state;
     return (
       <div className="trivia-container">
@@ -80,6 +100,8 @@ class TriviaCard extends Component {
           timeout={ this.timeout }
           isClicked={ isClicked }
           setAnswerTime={ this.setAnswerTime }
+          shouldReset={ shouldReset }
+          resetTimer={ this.resetTimer }
         />
         <p data-testid="question-category">{ category }</p>
         <p data-testid="question-text">{ question }</p>

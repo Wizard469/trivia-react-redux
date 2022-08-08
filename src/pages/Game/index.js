@@ -5,6 +5,7 @@ import './styles.css';
 import md5 from 'crypto-js/md5';
 import getQuestions from '../../utils/triviaQuestions';
 import TriviaCard from '../../components/TriviaCard';
+import Feedback from '../../components/Feedback';
 
 class Game extends Component {
   constructor() {
@@ -101,33 +102,20 @@ class Game extends Component {
           <p data-testid="header-player-name">{ name }</p>
           <p data-testid="header-score">{ score }</p>
         </header>
-        <TriviaCard
-          question={ questions[index] }
-          isClicked={ isClicked }
-          answer={ answers[index] }
-          updateQuestion={ this.updateQuestion }
-        />
-        {/* <div className="trivia-container">
-          <p data-testid="question-category">{ category }</p>
-          <p data-testid="question-text">{ question }</p>
-          <div className="answers" data-testid="answer-options">
-            {
-              answers[index]
-                .sort(() => Math.random() - half)
-                .map(({ text, testId, className }, answerIndex) => (
-                  <button
-                    key={ answerIndex }
-                    type="button"
-                    data-testid={ testId }
-                    className={ isClicked ? className : null }
-                    onClick={ this.isCorrect }
-                  >
-                    { escapeHtml(text) }
-                  </button>
-                ))
-            }
-          </div>
-        </div> */}
+        {
+          index === questions.length
+            ? (
+              <Feedback />
+            )
+            : (
+              <TriviaCard
+                question={ questions[index] }
+                isClicked={ isClicked }
+                answer={ answers[index] }
+                updateQuestion={ this.updateQuestion }
+              />
+            )
+        }
       </div>
     );
   }

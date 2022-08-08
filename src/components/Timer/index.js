@@ -18,7 +18,11 @@ export default class Timer extends Component {
 
   componentDidUpdate() {
     const { countDown, intervalId } = this.state;
-    const { isClicked } = this.props;
+    const { isClicked, shouldReset, resetTimer } = this.props;
+    if (shouldReset) {
+      this.setTimer();
+      resetTimer();
+    }
     if (isClicked && intervalId) {
       this.sendTime();
     }
@@ -55,6 +59,7 @@ export default class Timer extends Component {
     }, second);
     this.setState({
       intervalId,
+      countDown: 30,
     });
   }
 
@@ -72,4 +77,6 @@ Timer.propTypes = {
   isClicked: PropTypes.bool.isRequired,
   setAnswerTime: PropTypes.func.isRequired,
   timeout: PropTypes.func.isRequired,
+  shouldReset: PropTypes.bool.isRequired,
+  resetTimer: PropTypes.func.isRequired,
 };
