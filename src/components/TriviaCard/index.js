@@ -1,5 +1,7 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
+import Timer from '../Timer';
+import './styles.css';
 
 const half = 0.5;
 
@@ -8,12 +10,19 @@ export default class TriviaCard extends Component {
     super();
     this.state = {
       isClicked: false,
+      isDisabled: false,
     };
   }
 
   isCorrect = () => {
     this.setState({
       isClicked: true,
+    });
+  }
+
+  timeout = () => {
+    this.setState({
+      isDisabled: true,
     });
   }
 
@@ -25,9 +34,15 @@ export default class TriviaCard extends Component {
       },
       answer,
     } = this.props;
-    const { isClicked } = this.state;
+    const {
+      isClicked,
+      isDisabled,
+    } = this.state;
     return (
       <div className="trivia-container">
+        <Timer
+          timeout={ this.timeout }
+        />
         <p data-testid="question-category">{ category }</p>
         <p data-testid="question-text">{ question }</p>
         <div className="answers" data-testid="answer-options">
@@ -41,6 +56,7 @@ export default class TriviaCard extends Component {
                   data-testid={ testId }
                   className={ isClicked ? className : null }
                   onClick={ this.isCorrect }
+                  disabled={ isDisabled }
                 >
                   { text }
                 </button>
