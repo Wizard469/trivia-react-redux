@@ -51,6 +51,17 @@ class TriviaCard extends Component {
     }
   }
 
+  handleNext = () => {
+    const { updateQuestion } = this.props;
+    this.setState({
+      isClicked: false,
+      isDisabled: false,
+      answerTime: null,
+      isCorrect: null,
+    });
+    updateQuestion();
+  }
+
   render() {
     const {
       question: {
@@ -89,6 +100,17 @@ class TriviaCard extends Component {
               ))
           }
         </div>
+        {
+          isClicked && (
+            <button
+              type="button"
+              data-testid="btn-next"
+              onClick={ this.handleNext }
+            >
+              Next
+            </button>
+          )
+        }
       </div>
     );
   }
@@ -102,6 +124,7 @@ TriviaCard.propTypes = {
     difficulty: PropTypes.string,
   }).isRequired,
   updateScore: PropTypes.func.isRequired,
+  updateQuestion: PropTypes.func.isRequired,
 };
 
 const mapDispatchToProps = (dispatch) => ({

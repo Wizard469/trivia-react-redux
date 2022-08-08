@@ -60,6 +60,12 @@ class Game extends Component {
     }, () => this.getAnswers());
   }
 
+  updateQuestion = () => {
+    this.setState(({ index: prevIndex }) => ({
+      index: prevIndex + 1,
+    }));
+  }
+
   getEmailHash = () => {
     const { gravatarEmail } = this.props;
 
@@ -99,6 +105,7 @@ class Game extends Component {
           question={ questions[index] }
           isClicked={ isClicked }
           answer={ answers[index] }
+          updateQuestion={ this.updateQuestion }
         />
         {/* <div className="trivia-container">
           <p data-testid="question-category">{ category }</p>
