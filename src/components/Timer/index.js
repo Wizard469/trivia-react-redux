@@ -18,9 +18,23 @@ export default class Timer extends Component {
 
   componentDidUpdate() {
     const { countDown, intervalId } = this.state;
+    const { isClicked } = this.props;
+    if (isClicked && intervalId) {
+      this.sendTime();
+    }
     if (countDown === 0 && intervalId) {
       this.clearTimer();
     }
+  }
+
+  sendTime = () => {
+    const { intervalId, countDown } = this.state;
+    const { setAnswerTime } = this.props;
+    clearInterval(intervalId);
+    setAnswerTime(countDown);
+    this.setState({
+      intervalId: null,
+    });
   }
 
   clearTimer = () => {
@@ -55,5 +69,7 @@ export default class Timer extends Component {
 }
 
 Timer.propTypes = {
+  isClicked: PropTypes.bool.isRequired,
+  setAnswerTime: PropTypes.func.isRequired,
   timeout: PropTypes.func.isRequired,
 };
