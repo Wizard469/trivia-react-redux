@@ -2,5 +2,26 @@
   align-items: center;
   display: flex;
   flex-direction: column;
+  gap: 10px;
   min-height: 100vh;
+}
+
+.Ranking button {
+  padding: 5px 10px;
+}
+
+.ranking-list {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.player-ranking {
+  display: flex;
+  justify-content: space-between;
+  width: 300px;
+}
+
+.player-ranking img {
+  width: 20px;
 }

@@ -1,8 +1,10 @@
+import { MD5 } from 'crypto-js';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { resetScoreAction } from '../Redux/actions';
 import '../styles/Ranking.css';
+import { getScoreFromLocalStorage } from '../utils/scoreLocalStorage';
 
 class Ranking extends Component {
   handleClick = () => {
@@ -11,10 +13,27 @@ class Ranking extends Component {
     history.push('/');
   }
 
+  getEmailHash = (picture) => MD5(picture).toString()
+
   render() {
     return (
       <div className="Ranking">
         <h1 data-testid="ranking-title">Ranking</h1>
+        <div className="ranking-list">
+          {
+            getScoreFromLocalStorage().map(({ name, score, picture }, index) => (
+              <div key={ `${picture}${index}` } className="player-ranking">
+                <img src={ `https://www.gravatar.com/avatar/${this.getEmailHash(picture)}` } alt="Player Avatar" />
+                <p data-testid={ `player-name-${index}` }>
+                  { name }
+                </p>
+                <p data-testid={ `player-score-${index}` }>
+                  { score }
+                </p>
+              </div>
+            ))
+          }
+        </div>
         <button
           data-testid="btn-go-home"
           type="button"
