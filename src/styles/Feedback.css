@@ -1,0 +1,24 @@
+.Feedback {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  min-height: 100vh;
+}
+
+.feedback-content {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.feedback-content .feedback-heading {
+  justify-content: center;
+  margin-bottom: 5px;
+}
+
+.feedback-content p {
+  display: flex;
+  gap: 5px;
+  justify-content: space-between;
+}

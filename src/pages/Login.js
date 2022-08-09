@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { logUserAction } from '../Redux/actions';
 import getTriviaToken from '../utils/triviaToken';
-import './Login.css';
+import '../styles/Login.css';
 
 class Login extends Component {
   constructor() {
