@@ -1,18 +1,21 @@
-import { LOG_USER, UPDATE_SCORE } from '../actions';
+import { LOG_USER, RESET_SCORE, UPDATE_SCORE } from '../actions';
 
 const INITIAL_STATE = {
-  name: 'Renato Mendes',
-  assertions: '',
+  name: '',
+  assertions: 0,
   score: 0,
-  gravatarEmail: 'mendeslrenato@gmail.com',
+  gravatarEmail: '',
 };
 
 const player = (state = INITIAL_STATE, { type, payload }) => {
   switch (type) {
+  case RESET_SCORE:
+    return INITIAL_STATE;
   case UPDATE_SCORE:
     return {
       ...state,
       score: state.score + payload,
+      assertions: state.assertions + 1,
     };
   case LOG_USER:
     return {

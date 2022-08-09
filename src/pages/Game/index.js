@@ -1,11 +1,9 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { connect } from 'react-redux';
 import './styles.css';
-import md5 from 'crypto-js/md5';
 import getQuestions from '../../utils/triviaQuestions';
 import TriviaCard from '../../components/TriviaCard';
-import Feedback from '../../components/Feedback';
+import Header from '../../components/Header';
 
 class Game extends Component {
   constructor() {
@@ -67,12 +65,6 @@ class Game extends Component {
     }));
   }
 
-  getEmailHash = () => {
-    const { gravatarEmail } = this.props;
-
-    return md5(gravatarEmail).toString();
-  }
-
   render() {
     const {
       questions,
@@ -86,58 +78,32 @@ class Game extends Component {
         <h1>Carregando...</h1>
       );
     }
-    const {
-      name,
-      score,
-    } = this.props;
+
+    if (index === questions.length) {
+      const { history } = this.props;
+      history.push('/feedback');
+      return null;
+    }
 
     return (
       <div className="game-container">
-        <header>
-          <img
-            src={ `https://www.gravatar.com/avatar/${this.getEmailHash()}` }
-            alt="User Avatar"
-            data-testid="header-profile-picture"
-          />
-          <p data-testid="header-player-name">{ name }</p>
-          <p data-testid="header-score">{ score }</p>
-        </header>
-        {
-          index === questions.length
-            ? (
-              <Feedback />
-            )
-            : (
-              <TriviaCard
-                question={ questions[index] }
-                isClicked={ isClicked }
-                answer={ answers[index] }
-                updateQuestion={ this.updateQuestion }
-              />
-            )
-        }
+        <Header />
+
+        <TriviaCard
+          question={ questions[index] }
+          isClicked={ isClicked }
+          answer={ answers[index] }
+          updateQuestion={ this.updateQuestion }
+        />
       </div>
     );
   }
 }
 
 Game.propTypes = {
-  gravatarEmail: PropTypes.string.isRequired,
   history: PropTypes.shape({
     push: PropTypes.func,
   }).isRequired,
-  name: PropTypes.string.isRequired,
-  score: PropTypes.number.isRequired,
 };
 
-const mapStateToProps = ({ player: {
-  name,
-  gravatarEmail,
-  score,
-} }) => ({
-  name,
-  gravatarEmail,
-  score,
-});
-
-export default connect(mapStateToProps)(Game);
+export default Game;
