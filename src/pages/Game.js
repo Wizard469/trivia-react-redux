@@ -1,11 +1,11 @@
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import './styles.css';
+import '../styles/Game.css';
 import { Redirect } from 'react-router-dom';
-import getQuestions from '../../utils/triviaQuestions';
-import TriviaCard from '../../components/TriviaCard';
-import Header from '../../components/Header';
-import { saveScoreToLocalStorage } from '../../utils/scoreLocalStorage';
+import getQuestions from '../utils/triviaQuestions';
+import TriviaCard from '../components/TriviaCard';
+import Header from '../components/Header';
+import { saveScoreToLocalStorage } from '../utils/scoreLocalStorage';
 
 class Game extends Component {
   constructor() {

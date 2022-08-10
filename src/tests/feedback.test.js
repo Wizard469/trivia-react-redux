@@ -1,4 +1,4 @@
-import Feedback from "../pages/Feedback"
+import App from "../App";
 import React from 'react';
 import renderWithRouterAndRedux from "./helpers/renderWithRouterAndRedux"
 import { screen } from "@testing-library/react";
@@ -6,7 +6,7 @@ import userEvent from "@testing-library/user-event";
 
 describe('Desenvolva testes para atingir 90% de cobertura da tela de Feedbacks', () => {
   test('Testa se componente renderiza corretamente e botão Play Again', () => {
-    renderWithRouterAndRedux(<Feedback />, {
+    renderWithRouterAndRedux(<App />, {
       player: {
         name: 'Teste',
         assertions: 3,
@@ -21,7 +21,7 @@ describe('Desenvolva testes para atingir 90% de cobertura da tela de Feedbacks',
   });
 
   test('Testa se botão Ranking funciona corretamente', () => {
-    renderWithRouterAndRedux(<Feedback />, {
+    renderWithRouterAndRedux(<App />, {
       player: {
         name: 'Teste',
         assertions: 3,
