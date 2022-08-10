@@ -30,7 +30,6 @@ class TriviaCard extends Component {
         answersArray: answer.sort(() => Math.random() - half),
       };
     }
-
     // Return null to indicate no change to state.
     return null;
   }
@@ -52,6 +51,7 @@ class TriviaCard extends Component {
   timeout = () => {
     this.setState({
       isDisabled: true,
+      isClicked: true,
     });
   }
 
