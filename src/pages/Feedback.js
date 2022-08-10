@@ -24,7 +24,6 @@ class Feedback extends Component {
       <div className="Feedback">
         <Header />
         <div className="feedback-content">
-          <p className="feedback-heading" data-testid="feedback-text">Feedback</p>
           <p>
             Placar Final:
             <span data-testid="feedback-total-score">
