@@ -51,9 +51,7 @@ class Game extends Component {
     const invalidToken = 3;
     const triviaResponse = await getQuestions();
     if (!triviaResponse || triviaResponse.response_code === invalidToken) {
-      if (localStorage.getItem('token')) {
-        localStorage.removeItem('token');
-      }
+      localStorage.removeItem('token');
 
       return history.push('/');
     }

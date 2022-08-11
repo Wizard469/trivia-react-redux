@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { setConfigAction } from '../../Redux/actions';
-import { checkQuestions, getCategories } from '../../utils/triviaQuestions';
+import { checkQuestions, getCategories } from '../../utils/configQuestions';
 import './styles.css';
 
 class SettingsApp extends Component {
@@ -19,7 +19,12 @@ class SettingsApp extends Component {
   }
 
   componentDidMount() {
+    this.isMount = true;
     this.fetchCategories();
+  }
+
+  componentWillUnmount() {
+    this.isMount = false;
   }
 
   submitChanges = async (id) => {
@@ -57,9 +62,11 @@ class SettingsApp extends Component {
 
   fetchCategories = async () => {
     const categories = await getCategories();
-    this.setState({
-      categories: categories.trivia_categories,
-    });
+    if (categories && this.isMount) {
+      this.setState({
+        categories: categories.trivia_categories,
+      });
+    }
   }
 
   render() {
@@ -140,6 +147,7 @@ class SettingsApp extends Component {
                 <button
                   type="button"
                   onClick={ () => history.push('/') }
+                  data-testid="btn-config"
                 >
                   Voltar
                 </button>
