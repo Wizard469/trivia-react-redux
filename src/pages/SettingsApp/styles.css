@@ -1,0 +1,65 @@
+.Settings {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+  min-height: 100vh;
+}
+
+.settings-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.settings-content label {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.settings-content label span {
+  padding: 0 5px;
+}
+
+.settings-content label select {
+  padding: 5px;
+}
+
+.settings-content button {
+  padding: 5px 10px;
+}
+
+.validation-msg {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.validation-content {
+  align-items: center;
+  background-color: white;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  height: 50%;
+  justify-content: center;
+  padding: 40px;
+  width: 50%;
+}
+
+.validation-content p {
+  font-size: 25px;
+  text-align: center;
+}
+
+.validation-content button {
+  padding: 5px 10px;
+}
