@@ -1,0 +1,96 @@
+.Settings {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: 200px;
+  min-height: 100vh;
+}
+
+.Settings h1 {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+.settings-content {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 30px;
+}
+
+.settings-content label {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  padding: 10px;
+}
+
+.settings-content label span {
+  padding: 0 5px;
+}
+
+.settings-content label select {
+  padding: 5px;
+}
+
+.settings-content button {
+  background-color: var(--button-red-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.validation-content button {
+  background-color: var(--button-red-color);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  color: var(--primary-text);
+  padding: 10px;
+  width: 100%;
+}
+
+.settings-content button:hover {
+  background-color: var(--button-red-hover);
+}
+
+.validation-msg {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+}
+
+.validation-content {
+  align-items: center;
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  justify-content: center;
+  padding: 40px;
+
+}
+
+.validation-content p {
+  font-size: 25px;
+  max-width: 250px;
+  text-align: center;
+}

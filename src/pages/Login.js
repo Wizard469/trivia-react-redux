@@ -41,45 +41,51 @@ class Login extends Component {
     const { history } = this.props;
     return (
       <div className="login-container">
+        <h1>Jogo de Trivia</h1>
         <form>
-          <label htmlFor="name">
-            <input
-              type="text"
-              id="name"
-              name="name"
-              placeholder="Nome"
-              value={ name }
-              onChange={ this.handleChange }
-              data-testid="input-player-name"
-            />
-          </label>
-          <label htmlFor="email">
-            <input
-              type="email"
-              id="email"
-              name="email"
-              placeholder="E-mail"
-              value={ email }
-              onChange={ this.handleChange }
-              data-testid="input-gravatar-email"
-            />
-          </label>
-          <button
-            type="button"
-            data-testid="btn-play"
-            disabled={ this.validateBtn() }
-            onClick={ this.handlePlay }
-          >
-            Play
-          </button>
-          <button
-            type="button"
-            data-testid="btn-settings"
-            onClick={ () => history.push('/settings') }
-          >
-            Configurações
-          </button>
+          <div>
+            <label htmlFor="name">
+              <input
+                type="text"
+                id="name"
+                name="name"
+                placeholder="Nome"
+                value={ name }
+                onChange={ this.handleChange }
+                data-testid="input-player-name"
+              />
+            </label>
+            <label htmlFor="email">
+              <input
+                type="email"
+                id="email"
+                name="email"
+                placeholder="E-mail"
+                value={ email }
+                onChange={ this.handleChange }
+                data-testid="input-gravatar-email"
+              />
+            </label>
+          </div>
+          <div>
+            <button
+              type="button"
+              data-testid="btn-play"
+              disabled={ this.validateBtn() }
+              onClick={ this.handlePlay }
+            >
+              Play
+            </button>
+            <button
+              type="button"
+              data-testid="btn-settings"
+              onClick={ () => history.push('/settings') }
+            >
+              Configurações
+            </button>
+          </div>
         </form>
+        <h4>Feito por Renato Mendes, Edvaldo José, Jonathan Rodrigues e Diogo Camilo</h4>
       </div>
     );
   }

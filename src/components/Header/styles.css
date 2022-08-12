@@ -1,9 +1,29 @@
 .Header {
+  align-items: center;
+  background-color: var(--primary-color);
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding: 10px;
   width: 100%;
 }
 
+.Header div {
+  align-items: center;
+  display: flex;
+  font-size: 2.5rem;
+  gap: 10px;
+}
+
 .Header img {
-  width: 25px;
+  border-radius: 50%;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  width: 50px;
+
+}
+
+.Header p {
+  display: flex;
+  gap: 10px;
+  padding-right: 50px;
 }

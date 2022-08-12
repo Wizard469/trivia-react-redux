@@ -24,20 +24,21 @@ class Feedback extends Component {
       <div className="Feedback">
         <Header />
         <div className="feedback-content">
+          <h3>Feedback</h3>
           <p>
-            Placar Final:
+            Placar Final
             <span data-testid="feedback-total-score">
               { score }
             </span>
           </p>
           <p>
-            Número de acertos:
+            Número de acertos
             <span data-testid="feedback-total-question">
               { assertions }
             </span>
           </p>
           <p>
-            Desempenho:
+            Desempenho
             <span data-testid="feedback-text">
               { assertions >= three ? 'Well Done!' : 'Could be better...' }
             </span>
@@ -57,6 +58,7 @@ class Feedback extends Component {
             Ranking
           </button>
         </div>
+        <h4>Feito por Renato Mendes, Edvaldo José, Jonathan Rodrigues e Diogo Camilo</h4>
       </div>
     );
   }

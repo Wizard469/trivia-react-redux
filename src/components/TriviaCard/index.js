@@ -2,6 +2,7 @@ import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { updateScoreAction } from '../../Redux/actions';
+import decodeHtml from '../../utils/escapeHtml';
 import getScore from '../../utils/getScore';
 import Timer from '../Timer';
 import './styles.css';
@@ -96,15 +97,23 @@ class TriviaCard extends Component {
     } = this.state;
     return (
       <div className="trivia-container">
-        <Timer
-          timeout={ this.timeout }
-          isClicked={ isClicked }
-          setAnswerTime={ this.setAnswerTime }
-          shouldReset={ shouldReset }
-          resetTimer={ this.resetTimer }
-        />
-        <p data-testid="question-category">{ category }</p>
-        <p data-testid="question-text">{ question }</p>
+        <div className="timer">
+          <p>Tempo Restante</p>
+          <Timer
+            timeout={ this.timeout }
+            isClicked={ isClicked }
+            setAnswerTime={ this.setAnswerTime }
+            shouldReset={ shouldReset }
+            resetTimer={ this.resetTimer }
+          />
+        </div>
+        <div className="category-text">
+          <p>Categoria</p>
+          <p data-testid="question-category">{ category }</p>
+        </div>
+        <p className="question-text" data-testid="question-text">
+          { decodeHtml(question) }
+        </p>
         <div className="answers" data-testid="answer-options">
           {
             answersArray
@@ -128,6 +137,7 @@ class TriviaCard extends Component {
               type="button"
               data-testid="btn-next"
               onClick={ this.handleNext }
+              className="next-button"
             >
               Next
             </button>

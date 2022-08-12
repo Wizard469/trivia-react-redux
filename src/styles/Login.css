@@ -1,17 +1,75 @@
 .login-container {
   align-items: center;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  justify-content: space-between;
   min-height: 100vh;
 }
 
 .login-container form {
+  background-color: var(--primary-color);
+  border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
   display: flex;
   flex-direction: column;
-  gap: 5px;
+  gap: 30px;
+  padding: 50px;
+}
+
+.login-container form div {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 
 .login-container input, .login-container button {
   padding: 5px 10px;
+}
+
+.login-container form input {
+  border: 3px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  font-size: 1.5rem;
+  font-weight: 700;
+  padding: 10px;
+  transition: all ease 0.5s;
+}
+
+.login-container form input:focus {
+  border-color: #9ecaed;
+  box-shadow: 0 0 10px #9ecaed;
+  outline: none;
+}
+
+.login-container button {
+  background-color: var(--button-red-color);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  color: var(--primary-text);
+  cursor: pointer;
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.login-container button:hover {
+  background-color: var(--button-red-hover);
+}
+
+.login-container button:disabled {
+  background-color: var(--button-red-color);
+  color: var(--primary-text);
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.login-container h1, .login-container h4 {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
 }

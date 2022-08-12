@@ -65,9 +65,15 @@ export default class Timer extends Component {
 
   render() {
     const { countDown } = this.state;
+    const ten = 10;
     return (
       <div className="Timer">
-        <p>{ countDown }</p>
+        <p
+          style={ { color: countDown <= ten ? 'red' : null } }
+        >
+          { countDown }
+
+        </p>
       </div>
     );
   }
