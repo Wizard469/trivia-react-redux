@@ -23,24 +23,29 @@ class Ranking extends Component {
           {
             getScoreFromLocalStorage().map(({ name, score, picture }, index) => (
               <div key={ `${picture}${index}` } className="player-ranking">
-                <img src={ `https://www.gravatar.com/avatar/${this.getEmailHash(picture)}` } alt="Player Avatar" />
-                <p data-testid={ `player-name-${index}` }>
-                  { name }
-                </p>
+                <div>
+                  <p>{`${index + 1} - `}</p>
+                  <img src={ `https://www.gravatar.com/avatar/${this.getEmailHash(picture)}` } alt="Player Avatar" />
+                  <p data-testid={ `player-name-${index}` }>
+                    { name }
+                  </p>
+
+                </div>
                 <p data-testid={ `player-score-${index}` }>
                   { score }
                 </p>
               </div>
             ))
           }
+          <button
+            data-testid="btn-go-home"
+            type="button"
+            onClick={ this.handleClick }
+          >
+            Play Again
+          </button>
         </div>
-        <button
-          data-testid="btn-go-home"
-          type="button"
-          onClick={ this.handleClick }
-        >
-          Play Again
-        </button>
+        <h4>Feito por Renato Mendes, Edvaldo José, Jonathan Rodrigues e Diogo Camilo</h4>
       </div>
     );
   }

@@ -1,10 +1,7 @@
-const escapeHTML = (str) => str.replace(/[&<>'"]/g,
-  (tag) => ({
-    '&': '&amp;',
-    '<': '&lt;',
-    '>': '&gt;',
-    '\'': '&#39;',
-    '"': '&quot;',
-  }[tag]));
+function decodeHtml(html) {
+  const txt = document.createElement('textarea');
+  txt.innerHTML = html;
+  return txt.value;
+}
 
-export default escapeHTML;
+export default decodeHtml;

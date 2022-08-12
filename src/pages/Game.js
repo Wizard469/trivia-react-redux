@@ -95,6 +95,7 @@ class Game extends Component {
           answer={ answers[index] }
           updateQuestion={ this.updateQuestion }
         />
+        <h4>Feito por Renato Mendes, Edvaldo José, Jonathan Rodrigues e Diogo Camilo</h4>
       </div>
     );
   }

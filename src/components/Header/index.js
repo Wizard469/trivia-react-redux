@@ -18,13 +18,18 @@ class Header extends Component {
       } = this.props;
       return (
         <header className="Header">
-          <img
-            src={ `https://www.gravatar.com/avatar/${this.getEmailHash()}` }
-            alt="User Avatar"
-            data-testid="header-profile-picture"
-          />
-          <p data-testid="header-player-name">{ name }</p>
-          <p data-testid="header-score">{ score }</p>
+          <div>
+            <img
+              src={ `https://www.gravatar.com/avatar/${this.getEmailHash()}` }
+              alt="User Avatar"
+              data-testid="header-profile-picture"
+            />
+            <p data-testid="header-player-name">{ name }</p>
+          </div>
+          <p>
+            Pontuação
+            <span data-testid="header-score">{ score }</span>
+          </p>
         </header>
 
       );

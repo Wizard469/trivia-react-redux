@@ -6,16 +6,30 @@
   min-height: 100vh;
 }
 
+.Settings h1 {
+  background-color: var(--primary-color);
+  color: var(--primary-text);
+  padding: 10px;
+  text-align: center;
+  width: 100%;
+}
+
 .settings-content {
+  background-color: var(--primary-color);
+  border-radius: 10px;
   display: flex;
   flex-direction: column;
   gap: 10px;
+  padding: 30px;
 }
 
 .settings-content label {
+  background-color: rgba(255, 255, 255, 0.3);
+  border-radius: 5px;
   display: flex;
   flex-direction: column;
   gap: 5px;
+  padding: 10px;
 }
 
 .settings-content label span {
@@ -27,12 +41,32 @@
 }
 
 .settings-content button {
-  padding: 5px 10px;
+  background-color: var(--button-red-color);
+  border: none;
+  border-radius: 5px;
+  color: var(--primary-text);
+  font-size: 1.5rem;
+  font-weight: 600;
+  padding: 10px;
+}
+
+.validation-content button {
+  background-color: var(--button-red-color);
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.3);
+  color: var(--primary-text);
+  padding: 10px;
+  width: 100%;
+}
+
+.settings-content button:hover {
+  background-color: var(--button-red-hover);
 }
 
 .validation-msg {
   align-items: center;
-  background-color: rgba(0, 0, 0, 0.5);
+  background-color: rgba(0, 0, 0, 0.8);
   bottom: 0;
   display: flex;
   justify-content: center;
@@ -44,22 +78,19 @@
 
 .validation-content {
   align-items: center;
-  background-color: white;
+  background-color: var(--primary-color);
   border-radius: 10px;
+  box-shadow: 2px 4px 5px rgba(0, 0, 0, 0.9);
   display: flex;
   flex-direction: column;
   gap: 20px;
-  height: 50%;
   justify-content: center;
   padding: 40px;
-  width: 50%;
+
 }
 
 .validation-content p {
   font-size: 25px;
+  max-width: 250px;
   text-align: center;
-}
-
-.validation-content button {
-  padding: 5px 10px;
 }

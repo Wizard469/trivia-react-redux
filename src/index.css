@@ -1,5 +1,32 @@
+:root {
+  --primary-color: #032B43;
+  --button-green-color: #94FBAB;
+  --button-green-hover: #62ee80;
+  --button-red-color: #841C26;
+  --button-red-hover: rgb(181, 44, 58);
+  --bg-color: #848586;
+  --primary-text: #FFF;
+  --secondary-text: #333;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: 'Open Sans', sans-serif;
+  background-color: var(--bg-color);
+  color: var(--primary-text);
+  font-size: 2rem;
+}
+
+button {
+  cursor: pointer;
+  transition: all ease 0.5s;
 }
